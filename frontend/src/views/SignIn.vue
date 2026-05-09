@@ -3,7 +3,6 @@ import { ref } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useAuthStore } from '@/stores/auth.js';
 import logoMark from '@/assets/logo-mark.png';
-import logoFull from '@/assets/logo-full.png';
 
 const auth = useAuthStore();
 const router = useRouter();
@@ -29,31 +28,50 @@ async function submit() {
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col items-center justify-center px-4">
-    <form class="card w-full max-w-md p-8 space-y-6" @submit.prevent="submit">
-      <div class="flex flex-col items-center gap-3">
-        <img :src="logoFull" alt="Codeway" class=" h-14" />
-        <h1 class="text-xl font-semibold">Please sign in</h1>
+  <div class="min-h-screen flex flex-col items-center justify-center px-4 bg-[#1a1b2e]">
+    <form class="w-full max-w-sm flex flex-col gap-6" @submit.prevent="submit">
+      <div class="flex flex-col items-center gap-6 mb-2">
+        <img :src="logoMark" alt="Codeway" class="h-20 object-contain" />
+        <h1 class="text-xl font-medium text-slate-400">Please sign in</h1>
+
       </div>
 
       <div class="space-y-4">
         <div>
-          <label class="label" for="email">Email</label>
-          <input id="email" v-model="email" type="email" class="input" autocomplete="email" required />
+          <input
+            id="email"
+            v-model="email"
+            type="email"
+            class="w-full px-4 py-3 rounded-md bg-[#16182c] border border-fuchsia-900/50 text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
+            placeholder="E-mail address"
+            autocomplete="email"
+            required
+          />
         </div>
         <div>
-          <label class="label" for="password">Password</label>
-          <input id="password" v-model="password" type="password" class="input" autocomplete="current-password" required />
+          <input
+            id="password"
+            v-model="password"
+            type="password"
+            class="w-full px-4 py-3 rounded-md bg-[#16182c] border border-slate-700/50 text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
+            placeholder="Password"
+            autocomplete="current-password"
+            required
+          />
         </div>
       </div>
 
-      <p v-if="auth.error" class="text-coral-500 text-sm" role="alert">{{ auth.error }}</p>
+      <p v-if="auth.error" class="text-coral-500 text-sm text-center" role="alert">{{ auth.error }}</p>
 
-      <button class="btn-primary w-full" :disabled="submitting" type="submit">
+      <button
+        class="w-full py-3 rounded-md text-white font-medium bg-[#5b73e8] hover:bg-[#4b63d8] transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#1a1b2e] focus:ring-[#5b73e8] disabled:opacity-50"
+        :disabled="submitting"
+        type="submit"
+      >
         {{ submitting ? 'Signing in…' : 'Sign in' }}
       </button>
-    </form>
 
-    <p class="mt-6 text-xs text-slate-500">Codeway © 2025</p>
+      <p class="mt-8 text-xs text-slate-500 text-center">Codeway © 2026</p>
+    </form>
   </div>
 </template>

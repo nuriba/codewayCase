@@ -122,21 +122,21 @@ async function confirmDelete() {
       <p v-if="store.loading && !store.items.length" class="text-slate-400 text-sm">Loading…</p>
 
       <!-- Desktop table -->
-      <div class="card hidden md:block overflow-x-auto">
+      <div class="bg-[#1c1d2d] rounded-lg shadow-lg hidden md:block overflow-x-auto border border-[#2d2f4a]">
         <ParametersTable
           :items="sorted"
           @edit="startEdit"
           @delete="(p) => (deleteTarget = p)"
         />
         <!-- Inline new-parameter row -->
-        <div class="border-t border-navy-500/40 px-4 py-3 grid grid-cols-12 gap-2 items-start">
-          <input v-model="newKey" class="input col-span-3" placeholder="Key" />
-          <input v-model="newValue" class="input col-span-3" placeholder="Value" />
-          <input v-model="newDescription" class="input col-span-4" placeholder="Description" />
-          <button class="btn-add col-span-2" :disabled="inlineSaving" @click="inlineCreate">
+        <div class="px-6 py-4 grid grid-cols-12 gap-4 items-start bg-[#1c1d2d] rounded-b-lg">
+          <input v-model="newKey" class="col-span-3 px-4 py-2 rounded border border-[#2d2f4a] bg-[#232438] text-white placeholder-slate-500 focus:outline-none focus:border-[#00c5df]" placeholder="Key" />
+          <input v-model="newValue" class="col-span-3 px-4 py-2 rounded border border-[#2d2f4a] bg-[#232438] text-white placeholder-slate-500 focus:outline-none focus:border-[#00c5df]" placeholder="Value" />
+          <input v-model="newDescription" class="col-span-4 px-4 py-2 rounded border border-[#2d2f4a] bg-[#232438] text-white placeholder-slate-500 focus:outline-none focus:border-[#00c5df]" placeholder="Description" />
+          <button class="col-span-2 bg-[#00c5df] hover:bg-[#00b0c7] text-white font-semibold py-2 rounded transition-colors" :disabled="inlineSaving" @click="inlineCreate">
             {{ inlineSaving ? 'Adding…' : 'Add' }}
           </button>
-          <p v-if="inlineError" class="col-span-12 text-coral-500 text-xs">{{ inlineError }}</p>
+          <p v-if="inlineError" class="col-span-12 text-coral-500 text-xs mt-1">{{ inlineError }}</p>
         </div>
       </div>
 

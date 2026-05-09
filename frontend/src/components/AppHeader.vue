@@ -2,7 +2,6 @@
 import { ref, onMounted, onBeforeUnmount, computed } from 'vue';
 import { useAuthStore } from '@/stores/auth.js';
 import { useRouter } from 'vue-router';
-import logoFull from '@/assets/logo-full.png';
 import logoMark from '@/assets/logo-mark.png';
 
 const auth = useAuthStore();
@@ -31,7 +30,7 @@ async function signOut() {
   <header class="bg-navy-800 border-b border-navy-500/40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <img :src="logoFull" alt="Codeway" class="h-8 hidden sm:block" />
+        <img :src="logoMark" alt="Codeway" class="h-8 hidden sm:block" />
         <img :src="logoMark" alt="Codeway" class="h-8 sm:hidden" />
         <span class="text-slate-400 text-sm font-medium hidden sm:inline">Configuration</span>
       </div>
